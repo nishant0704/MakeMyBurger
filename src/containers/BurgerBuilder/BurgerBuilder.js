@@ -1,5 +1,7 @@
 import React from 'react';
 import Burger from '../../components/Burger/Burger';
+import Modal from '../../components/UI/Modal/Modal';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
 
@@ -79,6 +81,9 @@ export default class BurgerBuilder extends React.Component{
 
     return(
       <div>
+        <Modal>
+          <OrderSummary ingredients={this.state.ingredients}/>
+        </Modal>
         <Burger ingredients={this.state.ingredients}/>
         <BuildControls
           ingredientAdded={this.addIngredientHandler}
