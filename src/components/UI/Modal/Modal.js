@@ -1,21 +1,19 @@
 import React from 'react';
 import { Card } from 'mdbreact';
-import BackDrop from '../BackDrop/BackDrop';
-
-
 import './Modal.css';
+import Backdrop from '../Backdrop/Backdrop';
 
-
-const modal = (props) => (
+const modal = ( props ) => (
     <div>
-    <BackDrop show={props.show} clicked={props.modalClosed}/>
-    <Card className="Modal"
-      show={{
-        transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-        opacity: props.show ? '1' : '0'
-      }}>
-      {props.children}
-    </Card>
+        <Backdrop show={props.show} clicked={props.modalClosed} />
+        <Card
+            className="Modal"
+            style={{
+                transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                opacity: props.show ? '1' : '0'
+            }}>
+            {props.children}
+        </Card>
     </div>
 );
 
