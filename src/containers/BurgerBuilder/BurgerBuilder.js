@@ -1,8 +1,10 @@
 import React from 'react';
+import {Button} from 'mdbreact';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import classes from './BurgerBuilder.css';
 
 const INGREDIENT_PRICES = {
   salad:5,
@@ -12,11 +14,14 @@ const INGREDIENT_PRICES = {
   meat:35
 };
 
+
 export default class BurgerBuilder extends React.Component {
     // constructor(props) {
     //     super(props);
     //     this.state = {...}
     // }
+
+
     state = {
         ingredients: {
             salad: 0,
@@ -27,7 +32,8 @@ export default class BurgerBuilder extends React.Component {
         },
         totalPrice: 15,
         purchasable: false,
-        purchasing: false
+        purchasing: false,
+        showBuildControl:false,
     }
 
     updatePurchaseState (ingredients) {
@@ -84,7 +90,19 @@ export default class BurgerBuilder extends React.Component {
         alert('You continue!');
     }
 
+    showBuildControlsHandler = () => {
+      let showBuild = this.state.showBuildControl;
+      this.setState({
+        showBuildControl:!showBuild
+      });
+    }
+
     render () {
+      const MakeBurger = {
+        textAlign:'center',
+        backgroundColor:'cyan',
+      };
+
         const disabledInfo = {
             ...this.state.ingredients
         };
@@ -102,13 +120,20 @@ export default class BurgerBuilder extends React.Component {
                         price={this.state.totalPrice} />
                 </Modal>
                 <Burger ingredients={this.state.ingredients} />
-                <BuildControls
-                    ingredientAdded={this.addIngredientHandler}
-                    ingredientRemoved={this.removeIngredientHandler}
-                    disabled={disabledInfo}
-                    purchasable={this.state.purchasable}
-                    ordered={this.purchaseHandler}
-                    price={this.state.totalPrice} />
+                <div className="text-center">
+                  <button className="btn btn-amber" onClick={this.showBuildControlsHandler}>Make My Burger</button>
+                </div>
+                <div>
+                  { this.state.showBuildControl ?
+                    <BuildControls
+                      ingredientAdded={this.addIngredientHandler}
+                      ingredientRemoved={this.removeIngredientHandler}
+                      disabled={disabledInfo}
+                      purchasable={this.state.purchasable}
+                      ordered={this.purchaseHandler}
+                      price={this.state.totalPrice} /> : null
+                    }
+                </div>
             </div>
         );
     }
