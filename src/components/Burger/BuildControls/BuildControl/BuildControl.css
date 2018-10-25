@@ -5,7 +5,7 @@
     margin: 5px 0;
 }
 
-.BuildControl Button {
+.BuildControl button {
     display: block;
     font: inherit;
     padding: 5px;
@@ -16,14 +16,14 @@
     outline: none;
 }
 
-.BuildControl Button:disabled {
+.BuildControl button:disabled {
     background-color: #AC9980;
     border: 1px solid #7E7365;
     color: #ccc;
     cursor: default;
 }
 
-.BuildControl Button:hover:disabled {
+.BuildControl button:hover:disabled {
     background-color: #AC9980;
     color: #ccc;
     cursor: not-allowed;

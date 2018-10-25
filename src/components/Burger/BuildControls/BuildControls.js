@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from 'mdbreact';
 import './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
 
@@ -22,9 +21,9 @@ const buildControls = (props) => (
                 removed={() => props.ingredientRemoved(ctrl.type)}
                 disabled={props.disabled[ctrl.type]} />
         ))}
-        <Button className="OrderButton"
+        <button className="OrderButton"
         disabled={!props.purchasable}
-        onClick={props.ordered}>LETS ORDER IT</Button>
+        onClick={props.ordered}>LETS ORDER IT</button>
     </div>
 );
 
