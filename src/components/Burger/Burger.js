@@ -1,6 +1,6 @@
 import React from 'react';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
-import './Burger.css';
+import classes from './Burger.css';
 
 
 const burger = (props) => {
@@ -14,10 +14,10 @@ const burger = (props) => {
     return arr.concat(el)
   }, []);
   if(transformedIngredients.length === 0){
-    transformedIngredients = <p>Please Add your Ingredients!</p> 
+    transformedIngredients = <p>Please Add your Ingredients!</p>
   }
   return(
-    <div className="Burger">
+    <div className={classes.Burger}>
       <BurgerIngredient type="bread-top"/>
       {transformedIngredients}
       <BurgerIngredient type="bread-bottom"/>

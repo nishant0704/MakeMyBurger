@@ -1,9 +1,11 @@
 import React from 'react';
-import {Button} from 'mdbreact';
-import './Button.css';
+
+import classes from './Button.css';
 
 const button = (props) => (
-  <Button className={[Button,[props.BtnType]].join(' ')} onClick={props.clicked}> {props.children}</Button>
+    <button
+        className={[classes.Button, classes[props.btnType]].join(' ')}
+        onClick={props.clicked}>{props.children}</button>
 );
 
 export default button;
