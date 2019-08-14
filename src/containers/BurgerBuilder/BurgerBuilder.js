@@ -25,7 +25,7 @@ class BurgerBuilder extends Component {
             cheese: 0,
             veg: 0
         },
-        totalPrice: 4,
+        totalPrice: 20,
         purchasable: false,
         purchasing: false
     }
@@ -84,8 +84,10 @@ class BurgerBuilder extends Component {
         // alert('You continue!');
         const queryParams = [];
         for ( let i in this.state.ingredients ){
-          queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients));
+
+          queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
+        console.log(queryParams);
         const queryString = queryParams.join('&');
         this.props.history.push({
           pathname:'/checkout',
